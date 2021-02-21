@@ -4,15 +4,19 @@
   "description": "Poker hand comparison",
   "main": "src/pokerhand.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "mytest": "nodemon --exec babel-node src/test.js"
   },
   "keywords": [
     "poker",
     "texas",
     "holdem"
-	],
-	"private": true,
+  ],
+  "private": true,
   "devDependencies": {
+    "@babel/core": "^7.12.17",
+    "@babel/node": "^7.12.17",
+    "@babel/preset-env": "^7.12.17",
     "babel-core": "^6.26.3",
     "babel-jest": "^23.6.0",
     "babel-preset-env": "^1.7.0",

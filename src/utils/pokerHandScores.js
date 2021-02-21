@@ -1,0 +1,10 @@
+export const HIGH_CARD = 1;
+export const PAIR = 2;
+export const TWO_PAIR = 3;
+export const THREE_OF_A_KIND = 4;
+export const STRAIGHT = 5;
+export const FLUSH = 6;
+export const FULL_HOUSE = 7;
+export const FOUR_OF_A_KIND = 8;
+export const STRAIGHT_FLUSH = 9;
+export const ROYAL_FLUSH = 10;
