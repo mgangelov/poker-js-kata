@@ -15,7 +15,7 @@ export const cardValues = {
 };
 
 export const cardSuits = {
-  A: 0,
+  D: 0,
   C: 0,
   S: 0,
   H: 0
