@@ -17,6 +17,8 @@ Apart from the original Wikipedia link with the rules I also used:
 
 The only additional libraries used are lodash and babel-node (for hot reload development using `nodemon`).
 
+The file `mytest.js` has some random debugging that I've done - it's not part of the official tests.
+
 ## Possible improvements
 
 * It's possible that there are additional poker rules, which determine who the winner is in the case of clashing combinations with the same high card. That logic probably needs to be added
