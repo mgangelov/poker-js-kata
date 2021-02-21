@@ -11,7 +11,8 @@ const findScoreString = (score) => {
 
 const checkScore = (handString) => {
   const { values, suits } = parsePokerHand(handString);
-  const score = calculateScore(values, suits);
+  const { score, highCard } = calculateScore(values, suits);
+  console.log('HIGH CARD IS ', highCard);
   return findScoreString(score);
 };
 
@@ -21,11 +22,12 @@ const straightFlushHand = '2C 3C 4C 5C 6C';
 const flushHand = '2C TC JC 5C 6C';
 const fourOfAKindHand = 'KC KS KH KD 6C';
 const threeOfAKindHand = 'KC KS KH AD 6C';
-const fullHouseHand = 'KC KS KH AD AC';
+const fullHouseHand = '2C 2S 2H AD AC';
 const straightHand = '2C 3C 4C 5D 6D';
-const twoPairHand = '2C 2D 4C 4H 6D';
+const twoPairHand = '7C 2D 7C 2H 6D';
 const onePairHand = '2C 2D AC KH 6D';
 const highCardHand = 'JC 2D AC KH 6D';
+const highCardHand2 = 'JC 2D TC KH 6D';
 const testHand1 = '2H 3D 5S 9C KD';
 const testHand2 = '2C 3H 4S 8C AH';
 const testHand3 = '2H 4S 4C 2D 4H';
@@ -47,17 +49,18 @@ console.log(checkScore(straightHand));
 console.log(checkScore(twoPairHand));
 console.log(checkScore(onePairHand));
 console.log(checkScore(highCardHand));
+console.log(checkScore(highCardHand2));
 
 console.log('\nRANDOM TEST SCENARIOS');
-console.log(checkScore(testHand));
-console.log(checkScore(testHand1));
-console.log(checkScore(testHand2));
-console.log(checkScore(testHand3));
-console.log(checkScore(testHand4));
-console.log(checkScore(testHand5));
-console.log(checkScore(testHand6));
-console.log(checkScore(testHand7));
-console.log(checkScore(testHand8));
+// console.log(checkScore(testHand));
+// console.log(checkScore(testHand1));
+// console.log(checkScore(testHand2));
+// console.log(checkScore(testHand3));
+// console.log(checkScore(testHand4));
+// console.log(checkScore(testHand5));
+// console.log(checkScore(testHand6));
+// console.log(checkScore(testHand7));
+// console.log(checkScore(testHand8));
 
 console.log('\nPOKER HAND OBJECTS');
 const hand1 = new PokerHand('AC 4S 5S 8C AH');

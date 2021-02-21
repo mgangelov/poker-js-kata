@@ -7,7 +7,9 @@ import {
   checkValuesForThreeOfAKind,
   checkValuesRoyalFlush,
   checkValuesForTwoPairs,
-  checkValuesForAPair
+  checkValuesForAPair,
+  checkValuesForFlush,
+  checkValuesForHighCard
 } from "./checks";
 import * as pokerScores from "./pokerHandScores";
 
@@ -40,39 +42,69 @@ export const parsePokerHand = (pokerHandString) => {
 export const calculateScore = (values, suits) => {
   if (checkAllOfTheSameSuit(suits)) {
     if (checkValuesRoyalFlush(values)) {
-      return pokerScores.ROYAL_FLUSH;
+      return {
+        score: pokerScores.ROYAL_FLUSH,
+        highCard: null
+      };
     }
     if (checkValuesForStraight(values)) {
       // Since we know all cards are of the
       // same suit we have a straight
       // flush, rather than a regular one
-      return pokerScores.STRAIGHT_FLUSH;
+      return {
+        score: pokerScores.STRAIGHT_FLUSH,
+        highCard: checkValuesForStraight(values)
+      };
     }
     // If we only know that all cards are of
     // the same suit, then at least we have
     // a flush
-    return pokerScores.FLUSH;
+    return {
+      score: pokerScores.FLUSH,
+      highCard: checkValuesForFlush(values)
+    };
   }
   if (checkValuesForFourOfAKind(values)) {
-    return pokerScores.FOUR_OF_A_KIND;
+    return {
+      score: pokerScores.FOUR_OF_A_KIND,
+      highCard: checkValuesForFourOfAKind(values)
+    }
   }
   if (checkValuesForThreeOfAKind(values)) {
     if (checkValuesForFullHouse(values)) {
-      return pokerScores.FULL_HOUSE;
+      return {
+        score: pokerScores.FULL_HOUSE,
+        highCard: checkValuesForFullHouse(values)
+      }
     }
-    return pokerScores.THREE_OF_A_KIND;
+    return {
+      score: pokerScores.THREE_OF_A_KIND,
+      highCard: checkValuesForThreeOfAKind(values)
+    }
   }
   if (checkValuesForStraight(values)) {
     // In this case we know that not
     // all cards are of the same suit,
     // so we only have a straight
-    return pokerScores.STRAIGHT;
+    return {
+      score: pokerScores.STRAIGHT,
+      highCard: checkValuesForStraight(values)
+    }
   }
   if (checkValuesForTwoPairs(values)) {
-    return pokerScores.TWO_PAIR;
+    return {
+      score: pokerScores.TWO_PAIR,
+      highCard: checkValuesForTwoPairs(values)
+    }
   }
   if (checkValuesForAPair(values)) {
-    return pokerScores.PAIR;
+    return {
+      score: pokerScores.PAIR,
+      highCard: checkValuesForAPair(values)
+    }
   }
-  return pokerScores.HIGH_CARD;
+  return {
+    score: pokerScores.HIGH_CARD,
+    highCard: checkValuesForHighCard(values)
+  }
 }
