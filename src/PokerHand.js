@@ -1,21 +1,25 @@
-import { parsePokerHand } from "./utils/calculatePokerHandScore";
+import { calculateScore, parsePokerHand } from "./utils/calculatePokerHandScore";
 
 export class PokerHand {
 	constructor(pokerHandString) {
 		const parsedPokerHand = parsePokerHand(pokerHandString);
-		this.cards = parsePokerHand.cards;
-		this.values = parsePokerHand.values;
-		this.suits = parsePokerHand.suits;
-		this.handScore = 0;
+		this.cards = parsedPokerHand.cards;
+		this.values = parsedPokerHand.values;
+		this.suits = parsedPokerHand.suits;
+		const score = calculateScore(
+			this.values,
+			this.suits
+		);
+		this.handScore = score;
 	}
 
 
 	compareWith(pokerHand) {
-		// if (this.handScore > pokerHand.handScore) {
-		// 	return Result.WIN;
-		// } else if (this.handScore < pokerHand.handScore) {
-		// 	return Result.LOSS;
-		// }
+		if (this.handScore > pokerHand.handScore) {
+			return Result.WIN;
+		} else if (this.handScore < pokerHand.handScore) {
+			return Result.LOSS;
+		}
 		return Result.TIE;
 	}
 
