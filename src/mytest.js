@@ -52,15 +52,15 @@ console.log(checkScore(highCardHand));
 console.log(checkScore(highCardHand2));
 
 console.log('\nRANDOM TEST SCENARIOS');
-// console.log(checkScore(testHand));
-// console.log(checkScore(testHand1));
-// console.log(checkScore(testHand2));
-// console.log(checkScore(testHand3));
-// console.log(checkScore(testHand4));
-// console.log(checkScore(testHand5));
-// console.log(checkScore(testHand6));
-// console.log(checkScore(testHand7));
-// console.log(checkScore(testHand8));
+console.log(checkScore(testHand));
+console.log(checkScore(testHand1));
+console.log(checkScore(testHand2));
+console.log(checkScore(testHand3));
+console.log(checkScore(testHand4));
+console.log(checkScore(testHand5));
+console.log(checkScore(testHand6));
+console.log(checkScore(testHand7));
+console.log(checkScore(testHand8));
 
 console.log('\nPOKER HAND OBJECTS');
 const hand1 = new PokerHand('AC 4S 5S 8C AH');
